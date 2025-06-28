@@ -14,29 +14,22 @@ import { HeaderComponent } from './header/header.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { PeopleComponent } from './people/people.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    AboutComponent,
-    MoviesComponent,
-    TvComponent,
-    NetworkComponent,
-    LoginComponent,
-    RegisterComponent,
-    HeaderComponent,
-    NotFoundComponent,
-    PeopleComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        HomeComponent,
+        AboutComponent,
+        MoviesComponent,
+        TvComponent,
+        NetworkComponent,
+        LoginComponent,
+        RegisterComponent,
+        HeaderComponent,
+        NotFoundComponent,
+        PeopleComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
