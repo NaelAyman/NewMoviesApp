@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
@@ -12,32 +12,32 @@ export class RegisterComponent implements OnInit {
 
   error: string = '';
 
-  registerForm = new FormGroup({
-    first_name: new FormControl(null,
+  registerForm = new UntypedFormGroup({
+    first_name: new UntypedFormControl(null,
       [
         Validators.minLength(3),
         Validators.maxLength(10),
         Validators.required,
         Validators.pattern('^[a-z]{3,15}$')
       ]),
-    last_name: new FormControl(null,
+    last_name: new UntypedFormControl(null,
       [
         Validators.minLength(3),
         Validators.maxLength(10),
         Validators.required
       ]),
-    age: new FormControl(null,
+    age: new UntypedFormControl(null,
       [
         Validators.min(16),
         Validators.max(80),
         Validators.required
       ]),
-    email: new FormControl(null,
+    email: new UntypedFormControl(null,
       [
         Validators.email,
         Validators.required
       ]),
-    password: new FormControl(null,
+    password: new UntypedFormControl(null,
       [
         Validators.required,
         Validators.pattern('^[A-Z][a-z0-9]{3,8}$')
@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit {
   //   console.log(registerForm.value);
   // }
 
-  submitRegisterForm(registerForm: FormGroup) {
+  submitRegisterForm(registerForm: UntypedFormGroup) {
     this._AuthService.register(registerForm.value).subscribe( (response) => {
       if (response.message == 'success') {
         this._Router.navigate(['/login']);
