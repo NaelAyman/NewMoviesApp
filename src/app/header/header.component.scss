@@ -1,0 +1,24 @@
+@import "./../../styles.scss";
+
+.navbar {
+  background-color: transparent !important;
+  .navbar-brand {
+    color: $fontColor;
+    font-weight: bold;
+  }
+  .navbar-collapse {
+    justify-content: space-between;
+    align-items: center;
+    .navbar-nav {
+      .nav-item {
+        .nav-link {
+          color: $fontColor;
+        }
+      }
+    }
+    .right-nav {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
